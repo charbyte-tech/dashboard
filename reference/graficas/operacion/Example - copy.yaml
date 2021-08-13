@@ -1,0 +1,567 @@
+swagger: '2.0'
+info:
+  description: |-
+    # Modelo de negocio catalogos
+    API de gestión de catálogo de paises.
+  version: '1.0'
+  title: API catálogo de paises para modelo de negocio
+  contact:
+    name: API Support
+    email: support@example.com
+    url: 'http://example.com/support'
+tags:
+  - name: catalogos-paises
+    description: Gestión del catalogo de paises
+basePath: /mocks/franquicia/modelo-de-negocio/6363360
+host: franquicia.stoplight.io
+schemes:
+  - https
+produces:
+  - application/json
+consumes:
+  - application/json
+paths:
+  /:
+    get:
+      summary: Obtiene paises
+      responses:
+        '200':
+          description: Proceso ejecutado correctamente.
+          schema:
+            $ref: '#/definitions/SalidaPaises'
+          examples:
+            example-1:
+              mensaje: Proceso ejecutado correctamente.
+              folio: '285839478929478282'
+              resultado:
+                paises:
+                  - idPais: 1
+                    descripcion: México
+                    acronimo: MEX
+        '401':
+          description: Recurso no autorizado.
+          schema:
+            $ref: '#/definitions/Salida401'
+          examples:
+            example-1:
+              codigo: 401.sistemas-franquicia-modelo-negocio-catalogos-paises.104011
+              mensaje: Recurso no autorizado.
+              folio: '17020201110030616769'
+              info: 'https://franquiciags.com.mx/plataforma-franquicia-core/info#401.sistemas-franquicia-modelo-negocio-catalogos-paises.104011'
+        '404':
+          description: Información no encontrada.
+          schema:
+            $ref: '#/definitions/Salida404'
+          examples:
+            example-1:
+              codigo: 404.sistemas-franquicia-modelo-negocio-catalogos-paises.104041
+              mensaje: Información no encontrada.
+              folio: '17020201110030616769'
+              info: 'https://franquiciags.com.mx/plataforma-franquicia-core/info#404.sistemas-franquicia-modelo-negocio-catalogos-paises.104041'
+        '500':
+          description: Error interno en el servidor.
+          schema:
+            $ref: '#/definitions/Salida500'
+          examples:
+            example-1:
+              codigo: 500.sistemas-franquicia-modelo-negocio-catalogos-paises.105002
+              mensaje: Error interno en el servidor.
+              folio: '17020201110030616769'
+              info: 'https://franquiciags.com.mx/plataforma-franquicia-core/info#500.sistemas-franquicia-modelo-negocio-catalogos-paises.105002'
+      operationId: obtienePaises
+      description: Obtiene todos los paises
+      tags:
+        - catalogos-paises
+      security:
+        - OAuth2.0: []
+    post:
+      summary: Crear pais
+      operationId: creaPais
+      responses:
+        '201':
+          description: Recurso creado.
+          schema:
+            $ref: '#/definitions/SalidaAltaPais'
+          examples:
+            example-1:
+              mensaje: Recurso creado
+              folio: '285839478929478282'
+              resultado:
+                id: 1
+        '400':
+          description: Solicitud formada erroneamente.
+          schema:
+            $ref: '#/definitions/Salida400'
+          examples:
+            example-1:
+              codigo: 400.sistemas-franquicia-modelo-negocio-catalogos-paises.104001
+              mensaje: Solicitud formada erroneamente.
+              folio: '17020201110030616769'
+              info: 'https://franquiciags.com.mx/plataforma-franquicia-core/info#400.sistemas-franquicia-modelo-negocio-catalogos-paises.104001'
+              detalle:
+                - mensaje: Error 'xxxx' favor de validar.
+        '401':
+          description: Recurso no autorizado.
+          schema:
+            $ref: '#/definitions/Salida401'
+          examples:
+            example-1:
+              codigo: 401.sistemas-franquicia-modelo-negocio-catalogos-paises.104011
+              mensaje: Recurso no autorizado.
+              folio: '17020201110030616769'
+              info: 'https://franquiciags.com.mx/plataforma-franquicia-core/info#401.sistemas-franquicia-modelo-negocio-catalogos-paises.104011'
+        '500':
+          description: Error interno en el servidor.
+          schema:
+            $ref: '#/definitions/Salida500'
+          examples:
+            example-1:
+              codigo: 500.sistemas-franquicia-modelo-negocio-catalogos-paises.105002
+              mensaje: Error interno en el servidor.
+              folio: '17020201110030616769'
+              info: 'https://franquiciags.com.mx/plataforma-franquicia-core/info#500.sistemas-franquicia-modelo-negocio-catalogos-paises.105002'
+      tags:
+        - catalogos-paises
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/ParametrosPais'
+          description: Paramentros para el alta del pais
+          x-examples:
+            example-1:
+              descripcion: México
+              acronimo: MEX
+      security:
+        - OAuth2.0: []
+      description: Agrega un pais
+  '/{idPais}':
+    get:
+      summary: Obtiene paises
+      responses:
+        '200':
+          description: Proceso ejecutado correctamente.
+          schema:
+            $ref: '#/definitions/SalidaPais'
+          examples:
+            example-1:
+              mensaje: Proceso ejecutado correctamente.
+              folio: '285839478929478282'
+              resultado:
+                descripcion: México
+                acronimo: MEX
+        '400':
+          description: Solicitud formada erroneamente.
+          schema:
+            $ref: '#/definitions/Salida400'
+          examples:
+            example-1:
+              codigo: 400.sistemas-franquicia-modelo-negocio-catalogos-paises.104001
+              mensaje: Solicitud formada erroneamente.
+              folio: '17020201110030616769'
+              info: 'https://franquiciags.com.mx/plataforma-franquicia-core/info#400.sistemas-franquicia-modelo-negocio-catalogos-paises.104001'
+              detalle:
+                - mensaje: Error 'xxxx' favor de validar.
+        '401':
+          description: Recurso no autorizado.
+          schema:
+            $ref: '#/definitions/Salida401'
+          examples:
+            example-1:
+              codigo: 401.sistemas-franquicia-modelo-negocio-catalogos-paises.104011
+              mensaje: Recurso no autorizado.
+              folio: '17020201110030616769'
+              info: 'https://franquiciags.com.mx/plataforma-franquicia-core/info#401.sistemas-franquicia-modelo-negocio-catalogos-paises.104011'
+        '404':
+          description: Información no encontrada.
+          schema:
+            $ref: '#/definitions/Salida404'
+          examples:
+            example-1:
+              codigo: 404.sistemas-franquicia-modelo-negocio-catalogos-paises.104041
+              mensaje: Información no encontrada.
+              folio: '17020201110030616769'
+              info: 'https://franquiciags.com.mx/plataforma-franquicia-core/info#404.sistemas-franquicia-modelo-negocio-catalogos-paises.104041'
+        '500':
+          description: Error interno en el servidor.
+          schema:
+            $ref: '#/definitions/Salida500'
+          examples:
+            example-1:
+              codigo: 500.sistemas-franquicia-modelo-negocio-catalogos-paises.105002
+              mensaje: Error interno en el servidor.
+              folio: '17020201110030616769'
+              info: 'https://franquiciags.com.mx/plataforma-franquicia-core/info#500.sistemas-franquicia-modelo-negocio-catalogos-paises.105002'
+      operationId: obtienePais
+      description: Obtiene un pais
+      tags:
+        - catalogos-paises
+      security:
+        - OAuth2.0: []
+    parameters:
+      - type: integer
+        name: idPais
+        in: path
+        description: Identificador del pais
+        required: true
+        default: 1
+        minimum: 0
+    delete:
+      summary: Eliminar pais
+      responses:
+        '200':
+          description: Proceso ejecutado correctamente.
+          schema:
+            $ref: '#/definitions/SinResultado'
+          examples:
+            example-1:
+              mensaje: Proceso ejecutado correctamente.
+              folio: '285839478929478282'
+        '400':
+          description: Solicitud formada erroneamente.
+          schema:
+            $ref: '#/definitions/Salida400'
+          examples:
+            example-1:
+              codigo: 400.sistemas-franquicia-modelo-negocio-catalogos-paises.104001
+              mensaje: Solicitud formada erroneamente.
+              folio: '17020201110030616769'
+              info: 'https://franquiciags.com.mx/plataforma-franquicia-core/info#400.sistemas-franquicia-modelo-negocio-catalogos-paises.104001'
+              detalle:
+                - mensaje: Error 'xxxx' favor de validar.
+        '401':
+          description: Recurso no autorizado.
+          schema:
+            $ref: '#/definitions/Salida401'
+          examples:
+            example-1:
+              codigo: 401.sistemas-franquicia-modelo-negocio-catalogos-paises.104011
+              mensaje: Recurso no autorizado.
+              folio: '17020201110030616769'
+              info: 'https://franquiciags.com.mx/plataforma-franquicia-core/info#401.sistemas-franquicia-modelo-negocio-catalogos-paises.104011'
+        '500':
+          description: Error interno en el servidor.
+          schema:
+            $ref: '#/definitions/Salida500'
+          examples:
+            example-1:
+              codigo: 500.sistemas-franquicia-modelo-negocio-catalogos-paises.105002
+              mensaje: Error interno en el servidor.
+              folio: '17020201110030616769'
+              info: 'https://franquiciags.com.mx/plataforma-franquicia-core/info#500.sistemas-franquicia-modelo-negocio-catalogos-paises.105002'
+      operationId: eliminaPais
+      description: Elimina un item de los paises
+      tags:
+        - catalogos-paises
+      security:
+        - OAuth2.0: []
+    put:
+      summary: Actualizar pais
+      responses:
+        '200':
+          description: Proceso ejecutado correctamente.
+          schema:
+            $ref: '#/definitions/SinResultado'
+          examples:
+            example-1:
+              mensaje: Proceso ejecutado correctamente.
+              folio: '285839478929478282'
+        '400':
+          description: Solicitud formada erroneamente.
+          schema:
+            $ref: '#/definitions/Salida400'
+          examples:
+            example-1:
+              codigo: 400.sistemas-franquicia-modelo-negocio-catalogos-paises.104001
+              mensaje: Solicitud formada erroneamente.
+              folio: '17020201110030616769'
+              info: 'https://franquiciags.com.mx/plataforma-franquicia-core/info#400.sistemas-franquicia-modelo-negocio-catalogos-paises.104001'
+              detalle:
+                - mensaje: Error 'xxxx' favor de validar.
+        '401':
+          description: Recurso no autorizado.
+          schema:
+            $ref: '#/definitions/Salida401'
+          examples:
+            example-1:
+              codigo: 401.sistemas-franquicia-modelo-negocio-catalogos-paises.104011
+              mensaje: Recurso no autorizado.
+              folio: '17020201110030616769'
+              info: 'https://franquiciags.com.mx/plataforma-franquicia-core/info#401.sistemas-franquicia-modelo-negocio-catalogos-paises.104011'
+        '500':
+          description: Error interno en el servidor.
+          schema:
+            $ref: '#/definitions/Salida500'
+          examples:
+            example-1:
+              codigo: 500.sistemas-franquicia-modelo-negocio-catalogos-paises.105002
+              mensaje: Error interno en el servidor.
+              folio: '17020201110030616769'
+              info: 'https://franquiciags.com.mx/plataforma-franquicia-core/info#500.sistemas-franquicia-modelo-negocio-catalogos-paises.105002'
+      operationId: actualizaPais
+      description: Elimina un item de los paises
+      tags:
+        - catalogos-paises
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/ParametrosPais'
+          description: Paramentros para la actualización del pais
+          x-examples:
+            example-1:
+              descripcion: México
+              acronimo: MEX
+      security:
+        - OAuth2.0: []
+definitions:
+  Paises:
+    title: Paises
+    type: object
+    description: Lista de paises del modelo de negocio
+    properties:
+      paises:
+        type: array
+        items:
+          type: object
+          properties:
+            idPais:
+              type: integer
+              example: 1
+              description: Identificador del pais
+            descripcion:
+              type: string
+              description: Descripcion del pais
+              example: México
+            acronimo:
+              type: string
+              example: MEX
+              description: Acronimo para presentación en reportes
+  Salida400:
+    title: Salida400
+    type: object
+    x-examples:
+      example-1:
+        codigo: 400.sistemas-franquicia-modelo-negocio-catalogos-paises.104001
+        mensaje: Solicitud formada erroneamente.
+        folio: '17020201110030616769'
+        info: 'https://franquiciags.com.mx/plataforma-franquicia-core/info#400.sistemas-franquicia-modelo-negocio-catalogos-paises.104001'
+        detalle:
+          - mensaje: Error 'xxxx' favor de validar.
+    properties:
+      codigo:
+        type: string
+        description: Código de salida
+        example: 400.sistemas-franquicia-modelo-negocio-catalogos-paises.104001
+      mensaje:
+        type: string
+        description: Mensaje de salida
+        example: Solicitud formada erroneamente.
+      folio:
+        type: string
+        description: Folio de seguimiento
+        example: '17020201110030616769'
+      info:
+        type: string
+        description: Información del error generado
+        example: 'https://franquiciags.com.mx/plataforma-franquicia-core/info#400.sistemas-franquicia-modelo-negocio-catalogos-paises.104001'
+      detalle:
+        type: array
+        items:
+          $ref: '#/definitions/ErrorDetalle400'
+  ErrorDetalle400:
+    title: ErrorDetalle400
+    type: object
+    properties:
+      mensaje:
+        type: string
+        description: Mensaje de salida
+        example: Error 'xxxx' favor de validar.
+    description: Detalle del error 400
+  Salida404:
+    title: Salida404
+    type: object
+    x-examples:
+      example-1:
+        codigo: 404.sistemas-franquicia-modelo-negocio-catalogos-paises.104041
+        mensaje: Información no encontrada.
+        folio: '17020201110030616769'
+        info: 'https://franquiciags.com.mx/plataforma-franquicia-core/info#404.sistemas-franquicia-modelo-negocio-catalogos-paises.104041'
+    description: ''
+    properties:
+      codigo:
+        type: string
+        description: Código de salida
+        example: 404.sistemas-franquicia-modelo-negocio-catalogos-paises.104041
+      mensaje:
+        type: string
+        description: Mensaje de salida
+        example: Información no encontrada.
+      folio:
+        type: string
+        description: Folio de seguimiento
+        example: '17020201110030616769'
+      info:
+        type: string
+        description: Información del error generado
+        example: 'https://franquiciags.com.mx/plataforma-franquicia-core/info#404.sistemas-franquicia-modelo-negocio-catalogos-paises.104041'
+  Salida401:
+    title: Salida401
+    type: object
+    x-examples:
+      example-1:
+        codigo: 401.sistemas-franquicia-modelo-negocio-catalogos-paises.104011
+        mensaje: Recurso no autorizado.
+        folio: '17020201110030616769'
+        info: 'https://franquiciags.com.mx/plataforma-franquicia-core/info#401.sistemas-franquicia-modelo-negocio-catalogos-paises.104011'
+    description: ''
+    properties:
+      codigo:
+        type: string
+        description: Código de salida
+        example: 401.sistemas-franquicia-modelo-negocio-catalogos-paises.104011
+      mensaje:
+        type: string
+        description: Mensaje de salida
+        example: Recurso no autorizado.
+      folio:
+        type: string
+        description: Folio de seguimiento
+        example: '17020201110030616769'
+      info:
+        type: string
+        description: Información del error generado
+        example: 'https://franquiciags.com.mx/plataforma-franquicia-core/info#401.sistemas-franquicia-modelo-negocio-catalogos-paises.104011'
+  Salida500:
+    title: Salida500
+    type: object
+    x-examples:
+      example-1:
+        codigo: 500.sistemas-franquicia-modelo-negocio-catalogos-paises.105002
+        mensaje: Error interno en el servidor.
+        folio: '17020201110030616769'
+        info: 'https://franquiciags.com.mx/plataforma-franquicia-core/info#500.sistemas-franquicia-modelo-negocio-catalogos-paises.105002'
+    properties:
+      codigo:
+        type: string
+        description: Código de salida
+        example: 500.sistemas-franquicia-modelo-negocio-catalogos-paises.105002
+      mensaje:
+        type: string
+        description: Mensaje de salida
+        example: Error interno en el servidor.
+      folio:
+        type: string
+        description: Folio de seguimiento
+        example: '17020201110030616769'
+      info:
+        type: string
+        description: Información del error generado
+        example: 'https://franquiciags.com.mx/plataforma-franquicia-core/info#500.sistemas-franquicia-modelo-negocio-catalogos-paises.105002'
+  Pais:
+    description: ''
+    type: object
+    title: ''
+    properties:
+      descripcion:
+        type: string
+        description: Descripcion del pais
+        example: México
+      acronimo:
+        type: string
+        example: MEX
+        description: Acronimo para presentación en reportes
+  SinResultado:
+    title: SinResultado
+    type: object
+    description: Respuesta sin resultado
+    properties:
+      mensaje:
+        type: string
+        example: Proceso ejecutado correctamente.
+        description: Mensaje de salida
+      folio:
+        type: string
+        example: '285839478929478282'
+        description: Folio de seguimiento
+  AltaPais:
+    title: Altapais
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 1
+        description: Identificador del pais generado
+  SalidaAltaPais:
+    title: SalidaAltaPais
+    type: object
+    description: Datos del objeto pais
+    properties:
+      mensaje:
+        type: string
+        description: Mensaje de salida
+        example: Recurso creado
+      folio:
+        type: string
+        example: '285839478929478282'
+        description: Folio de seguimiento
+      resultado:
+        $ref: '#/definitions/AltaPais'
+  SalidaPaises:
+    title: SalidaPaises
+    type: object
+    description: ''
+    properties:
+      mensaje:
+        type: string
+        description: Mensaje de salida
+        example: Proceso ejecutado correctamente.
+      folio:
+        type: string
+        example: '285839478929478282'
+        description: Folio de seguimiento
+      resultado:
+        $ref: '#/definitions/Paises'
+  SalidaPais:
+    title: Salidapais
+    type: object
+    description: ''
+    properties:
+      mensaje:
+        type: string
+        description: Mensaje de salida
+        example: Proceso ejecutado correctamente.
+      folio:
+        type: string
+        example: '285839478929478282'
+        description: Folio de seguimiento
+      resultado:
+        $ref: '#/definitions/Pais'
+  ParametrosPais:
+    title: ParametrosPais
+    type: object
+    description: Parametros del pais
+    properties:
+      descripcion:
+        type: string
+        example: México
+        description: Descripcion del pais
+        pattern: .*
+        maxLength: 50
+      acronimo:
+        type: string
+        description: Acronimo para presentación en reportes
+        maxLength: 10
+        pattern: '^[A-Za-z]'
+        example: MEX
+    required:
+      - descripcion
+      - acronimo
+securityDefinitions:
+  OAuth2.0:
+    type: oauth2
+    flow: password
+    tokenUrl: 'https://franquicia.stoplight.io/mocks/franquicia/utilerias/6370727'
+    scopes: {}
+security:
+  - OAuth2.0: []
