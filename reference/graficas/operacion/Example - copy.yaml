@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   description: |-
-    # Modelo de negocio catalogos
+    # Modelo de negocio catalogods
     API de gestión de catálogo de paises.
   version: '1.0'
   title: API catálogo de paises para modelo de negocio
